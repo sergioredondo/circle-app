@@ -44,6 +44,10 @@ function handleMotion(event) {
     // Definir un rango mayor para la detección de centrado
     let threshold = 20; // Ampliamos el rango de detección
 
+    // Verificación de la posición
+    console.log("Posición X:", positionX, "Posición Y:", positionY);
+    console.log("Distancia X:", distanceX, "Distancia Y:", distanceY);
+
     if (distanceX < threshold && distanceY < threshold) {
         // Cambiar ambos círculos a color verde
         circleLarge.style.animation = 'success-color-change 1s forwards';
@@ -77,4 +81,4 @@ function createFireworks(x, y) {
         }, 800);
     }
 }
-
+}
