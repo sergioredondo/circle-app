@@ -7,6 +7,7 @@ const circleSmallRadius = 25; // Radio del círculo pequeño
 const gameArea = document.getElementById("game-area");
 const circleSmall = document.getElementById("circle-small");
 const circleLarge = document.getElementById("circle-large");
+const circleGuide = document.getElementById("circle-guide"); // Círculo guía
 
 // Obtener el tamaño del área de juego
 const gameAreaWidth = gameArea.offsetWidth;
@@ -40,14 +41,8 @@ function handleMotion(event) {
     // Definir un rango mayor para la detección de centrado
     let threshold = 10;
 
-    // Verificación de la posición
-    console.log("Posición X:", positionX, "Posición Y:", positionY);
-    console.log("Distancia X:", distanceX, "Distancia Y:", distanceY);
-
     // Comprobar si el juego ya ha sido ganado
     if (distanceX < threshold && distanceY < threshold && !isGameWon) {
-        console.log("Círculo pequeño centrado. Generando fuegos artificiales...");
-
         // Cambiar ambos círculos a color verde
         circleLarge.style.borderColor = 'green';
         circleSmall.style.borderColor = 'green';

@@ -1,6 +1,11 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
 #game-area {
     position: relative;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: black; /* Fondo oscuro */
 }
@@ -13,6 +18,16 @@
     border-radius: 50%;
     left: calc(50% - 100px); /* Centrado */
     top: calc(50% - 100px); /* Centrado */
+}
+
+#circle-guide {
+    position: absolute;
+    width: 70px; /* Mínimamente más grande que el círculo pequeño */
+    height: 70px; /* Mínimamente más grande que el círculo pequeño */
+    border: 2px dashed white; /* Borde discontínuo blanco */
+    border-radius: 50%;
+    left: calc(50% - 35px); /* Centrado */
+    top: calc(50% - 35px); /* Centrado */
 }
 
 #circle-small {
@@ -31,7 +46,7 @@
     height: 5px;
     background-color: yellow; /* Color de los fuegos artificiales */
     border-radius: 50%;
-    animation: explode 0.5s ease-out;
+    animation: explode 0.5s ease-out forwards; /* Mantener el estado final */
 }
 
 @keyframes explode {
