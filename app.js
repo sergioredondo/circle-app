@@ -50,9 +50,9 @@ function handleMotion(event) {
         circleSmall.style.animation = 'success-color-change 1s forwards';
 
         // Mostrar fuegos artificiales en el centro del círculo grande
+        console.log("Círculo pequeño centrado. Generando fuegos artificiales...");
         createFireworks(gameAreaWidth / 2, gameAreaHeight / 2);
-        console.log("Fuegos artificiales generados en: ", gameAreaWidth / 2, gameAreaHeight / 2);
-    }
+        
 }
 
 // Escuchar el movimiento del acelerómetro
