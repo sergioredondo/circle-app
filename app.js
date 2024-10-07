@@ -31,15 +31,20 @@ function handleMotion(event) {
     let maxX = gameAreaWidth / 2 - circleLargeRadius + circleSmallRadius;
     let maxY = gameAreaHeight / 2 - circleLargeRadius + circleSmallRadius;
 
-    // Limitar el movimiento dentro del círculo grande
     positionX = Math.max(-maxX, Math.min(maxX, positionX));
     positionY = Math.max(-maxY, Math.min(maxY, positionY));
 
     // Mover el círculo pequeño en la pantalla
     circleSmall.style.transform = `translate(${positionX}px, ${positionY}px)`;
 
-    // Verificar si el círculo pequeño está en el centro del grande
-    if (Math.abs(positionX) < 5 && Math.abs(positionY) < 5) {
+    // Verificar si el círculo pequeño está en el centro del círculo guía
+    let distanceX = Math.abs(positionX);
+    let distanceY = Math.abs(positionY);
+
+    // Definir un rango mayor para la detección de centrado
+    let threshold = 10; // Ampliamos el rango de detección
+
+    if (distanceX < threshold && distanceY < threshold) {
         // Cambiar ambos círculos a color verde
         circleLarge.style.animation = 'success-color-change 1s forwards';
         circleSmall.style.animation = 'success-color-change 1s forwards';
