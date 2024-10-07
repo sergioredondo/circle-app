@@ -17,12 +17,12 @@ function handleOrientation(event) {
     let y = event.beta;  // Inclinación de adelante hacia atrás
 
     // Ajustamos la sensibilidad para que pequeños movimientos se traduzcan en grandes cambios
-    let sensitivityX = 10;  // Aumenta la sensibilidad del eje X
-    let sensitivityY = 10;  // Aumenta la sensibilidad del eje Y (más controlado)
+    let sensitivityX = 1;  // Aumenta la sensibilidad del eje X
+    let sensitivityY = 1;  // Aumenta la sensibilidad del eje Y (más controlado)
 
     // Calcular nuevos valores de movimiento basados en la sensibilidad
-    let moveX = window.innerWidth / 5 + (x * sensitivityX);
-    let moveY = window.innerHeight / 5 + (y * sensitivityY);
+    let moveX = window.innerWidth / 1 + (x * sensitivityX);
+    let moveY = window.innerHeight / 1 + (y * sensitivityY);
 
     // Limitar el movimiento dentro del área visible
     moveX = Math.min(window.innerWidth - smallBounds.width, Math.max(0, moveX));
@@ -40,10 +40,10 @@ function checkIfCentered() {
 
     // Verifica si el cuadrado pequeño está centrado con el guía
     if (
-        smallBounds.left > guideBounds.left - 5 && 
-        smallBounds.right < guideBounds.right + 5 &&
-        smallBounds.top > guideBounds.top - 5 && 
-        smallBounds.bottom < guideBounds.bottom + 5
+        smallBounds.left > guideBounds.left - 2 && 
+        smallBounds.right < guideBounds.right + 2 &&
+        smallBounds.top > guideBounds.top - 2 && 
+        smallBounds.bottom < guideBounds.bottom + 2
     ) {
         centered = true;
         changeColorToGreen();
