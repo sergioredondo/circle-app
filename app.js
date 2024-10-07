@@ -51,6 +51,7 @@ function handleMotion(event) {
 
         // Mostrar fuegos artificiales en el centro del círculo grande
         createFireworks(gameAreaWidth / 2, gameAreaHeight / 2);
+        console.log("Fuegos artificiales generados en: ", gameAreaWidth / 2, gameAreaHeight / 2);
     }
 }
 

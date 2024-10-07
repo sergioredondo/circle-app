@@ -55,24 +55,24 @@ body {
 }
 }
 
-/* Animación de cambio de color cuando el usuario gana */
-@keyframes success-color-change {
-    0% { background-color: transparent; }
-    100% { background-color: green; }
-}
-
-/* Estilo para la animación de fuegos artificiales */
+/* Estilos para los fuegos artificiales */
 .firework {
     position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffcc00; /* Color de los fuegos artificiales */
     border-radius: 50%;
-    background-color: limegreen;
-    width: 5px;
-    height: 5px;
-    animation: fireworks-explosion 0.8s ease-out forwards;
+    animation: firework-animation 0.8s ease-out forwards;
 }
 
-/* Animación de fuegos artificiales */
-@keyframes fireworks-explosion {
-    0% { transform: scale(0); opacity: 1; }
-    100% { transform: scale(5); opacity: 0; }
+/* Animación para los fuegos artificiales */
+@keyframes firework-animation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
 }
