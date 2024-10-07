@@ -2,34 +2,33 @@ let squareSmall = document.getElementById("square-small");
 let squareGuide = document.getElementById("square-guide");
 let squareLarge = document.getElementById("square-large");
 
-let guideBounds = squareGuide.getBoundingClientRect();
-let smallBounds = squareSmall.getBoundingClientRect();
-
-// Variable para manejar el estado del juego
 let centered = false;
+
+// Ajustamos la sensibilidad
+const sensitivityX = 20;  // Reducimos la escala en el eje X
+const sensitivityY = 40;  // Reducimos la escala en el eje Y
 
 window.addEventListener("deviceorientation", handleOrientation, true);
 
 function handleOrientation(event) {
-    if (centered) return; // Si ya está centrado, no hacemos nada
+    if (centered) return;  // No hacemos nada si el cuadrado ya está centrado
 
     let x = event.gamma; // Inclinación de lado a lado
-    let y = event.beta;  // Inclinación de adelante hacia atrás
+    let y = event.beta;  // Inclinación adelante-atrás
 
-    // Ajustamos la sensibilidad para que pequeños movimientos se traduzcan en grandes cambios
-    let sensitivityX = 1;  // Aumenta la sensibilidad del eje X
-    let sensitivityY = 1;  // Aumenta la sensibilidad del eje Y (más controlado)
+    // Limitar el rango de valores de inclinación para evitar movimientos extremos
+    if (x > 45) x = 45;
+    if (x < -45) x = -45;
+    if (y > 45) y = 45;
+    if (y < -45) y = -45;
 
-    // Calcular nuevos valores de movimiento basados en la sensibilidad
-    let moveX = window.innerWidth / 2 + (x * sensitivityX);
-    let moveY = window.innerHeight / 2 + (y * sensitivityY);
+    // Ajustamos el movimiento en función de la sensibilidad
+    let moveX = (x / sensitivityX) * (window.innerWidth - squareSmall.offsetWidth);
+    let moveY = (y / sensitivityY) * (window.innerHeight - squareSmall.offsetHeight);
 
-    // Limitar el movimiento dentro del área visible
-    moveX = Math.min(window.innerWidth - smallBounds.width, Math.max(0, moveX));
-    moveY = Math.min(window.innerHeight - smallBounds.height, Math.max(0, moveY));
-
-    squareSmall.style.left = `${moveX}px`;
-    squareSmall.style.top = `${moveY}px`;
+    // Posicionar el cuadrado pequeño
+    squareSmall.style.left = `${50 + moveX}px`;
+    squareSmall.style.top = `${50 + moveY}px`;
 
     checkIfCentered();
 }
@@ -40,9 +39,9 @@ function checkIfCentered() {
 
     // Verifica si el cuadrado pequeño está centrado con el guía
     if (
-        smallBounds.left > guideBounds.left - 5 && 
+        smallBounds.left > guideBounds.left - 5 &&
         smallBounds.right < guideBounds.right + 5 &&
-        smallBounds.top > guideBounds.top - 5 && 
+        smallBounds.top > guideBounds.top - 5 &&
         smallBounds.bottom < guideBounds.bottom + 5
     ) {
         centered = true;
@@ -58,4 +57,14 @@ function changeColorToGreen() {
 
 function showFireworks() {
     for (let i = 0; i < 20; i++) {
-        let firework = document.createElement
+        let firework = document.createElement("div");
+        firework.classList.add("firework");
+        firework.style.left = `${Math.random() * window.innerWidth}px`;
+        firework.style.top = `${Math.random() * window.innerHeight}px`;
+        document.body.appendChild(firework);
+
+        setTimeout(() => {
+            firework.remove();
+        }, 1000);
+    }
+}
