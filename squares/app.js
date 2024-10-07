@@ -21,8 +21,8 @@ function handleOrientation(event) {
     let sensitivityY = 1;  // Aumenta la sensibilidad del eje Y (más controlado)
 
     // Calcular nuevos valores de movimiento basados en la sensibilidad
-    let moveX = window.innerWidth / 1 + (x * sensitivityX);
-    let moveY = window.innerHeight / 1 + (y * sensitivityY);
+    let moveX = window.innerWidth / 2 + (x * sensitivityX);
+    let moveY = window.innerHeight / 2 + (y * sensitivityY);
 
     // Limitar el movimiento dentro del área visible
     moveX = Math.min(window.innerWidth - smallBounds.width, Math.max(0, moveX));
