@@ -35,7 +35,7 @@ function handleMotion(event) {
     let distanceY = Math.abs(positionY);
 
     // Definir un rango mayor para la detección de centrado
-    let threshold = 20;
+    let threshold = 10;
 
     // Verificación de la posición
     console.log("Posición X:", positionX, "Posición Y:", positionY);
@@ -51,7 +51,7 @@ function handleMotion(event) {
 
 // Función para crear fuegos artificiales
 function createFireworks(x, y) {
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 10; i++) {
         let firework = document.createElement('div');
         firework.classList.add('firework');
         firework.style.left = `${x + (Math.random() * 100) - 50}px`;
