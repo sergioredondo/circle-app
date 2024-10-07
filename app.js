@@ -12,6 +12,9 @@ const circleLarge = document.getElementById("circle-large");
 const gameAreaWidth = gameArea.offsetWidth;
 const gameAreaHeight = gameArea.offsetHeight;
 
+// Variables para controlar si el juego se ha ganado
+let isGameWon = false;
+
 // Función para manejar el movimiento del dispositivo
 function handleMotion(event) {
     let accelX = event.accelerationIncludingGravity.x;
@@ -41,11 +44,16 @@ function handleMotion(event) {
     console.log("Posición X:", positionX, "Posición Y:", positionY);
     console.log("Distancia X:", distanceX, "Distancia Y:", distanceY);
 
-    if (distanceX < threshold && distanceY < threshold) {
-        
-        // Cambiar ambos círculos a color verde inmediatamente
+    // Comprobar si el juego ya ha sido ganado
+    if (distanceX < threshold && distanceY < threshold && !isGameWon) {
+        console.log("Círculo pequeño centrado. Generando fuegos artificiales...");
+
+        // Cambiar ambos círculos a color verde
         circleLarge.style.backgroundColor = 'green';
         circleSmall.style.backgroundColor = 'green';
+
+        // Establecer la bandera de juego ganado
+        isGameWon = true;
 
         // Generar fuegos artificiales
         createFireworks(gameAreaWidth / 2, gameAreaHeight / 2);
