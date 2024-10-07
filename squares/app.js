@@ -16,12 +16,17 @@ function handleOrientation(event) {
     let x = event.gamma; // Inclinación de lado a lado
     let y = event.beta;  // Inclinación de adelante hacia atrás
 
-    // Ajustar los límites para mover el cuadrado pequeño
-    let maxX = window.innerWidth - smallBounds.width;
-    let maxY = window.innerHeight - smallBounds.height;
+    // Ajustamos la sensibilidad para que pequeños movimientos se traduzcan en grandes cambios
+    let sensitivityX = 5;  // Aumenta la sensibilidad del eje X
+    let sensitivityY = 2;  // Aumenta la sensibilidad del eje Y (más controlado)
 
-    let moveX = (x / 90) * maxX;
-    let moveY = (y / 180) * maxY;
+    // Calcular nuevos valores de movimiento basados en la sensibilidad
+    let moveX = window.innerWidth / 2 + (x * sensitivityX);
+    let moveY = window.innerHeight / 2 + (y * sensitivityY);
+
+    // Limitar el movimiento dentro del área visible
+    moveX = Math.min(window.innerWidth - smallBounds.width, Math.max(0, moveX));
+    moveY = Math.min(window.innerHeight - smallBounds.height, Math.max(0, moveY));
 
     squareSmall.style.left = `${moveX}px`;
     squareSmall.style.top = `${moveY}px`;
@@ -53,14 +58,4 @@ function changeColorToGreen() {
 
 function showFireworks() {
     for (let i = 0; i < 20; i++) {
-        let firework = document.createElement("div");
-        firework.classList.add("firework");
-        firework.style.left = `${Math.random() * window.innerWidth}px`;
-        firework.style.top = `${Math.random() * window.innerHeight}px`;
-        document.body.appendChild(firework);
-
-        setTimeout(() => {
-            firework.remove();
-        }, 1000);
-    }
-}
+        let firework = document.createElement
