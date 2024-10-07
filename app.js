@@ -1,29 +1,22 @@
-// Variables para obtener los círculos
-const circleSmall = document.getElementById('circle-small');
-const gameArea = document.getElementById('game-area');
-
-// Variables para rastrear el movimiento
+// Variables globales
 let positionX = 0;
 let positionY = 0;
-let speedFactor = 1; // Ajusta la velocidad de respuesta del movimiento
+const speedFactor = 5; // Factor de velocidad
+const circleLargeRadius = 100; // Radio del círculo grande
+const circleSmallRadius = 25; // Radio del círculo pequeño
+const gameArea = document.getElementById("game-area");
+const circleSmall = document.getElementById("circle-small");
+const circleLarge = document.getElementById("circle-large");
 
-// Dimensiones del área de juego
+// Obtener el tamaño del área de juego
 const gameAreaWidth = gameArea.offsetWidth;
 const gameAreaHeight = gameArea.offsetHeight;
 
-// Tamaño del círculo grande (para los límites del juego)
-const circleLargeRadius = document.getElementById('circle-large').offsetWidth / 2;
-
-// Tamaño del círculo pequeño (necesario para ajustarlo al centro del círculo grande)
-const circleSmallRadius = circleSmall.offsetWidth / 2;
-
-// Función para detectar el movimiento del dispositivo
+// Función para manejar el movimiento del dispositivo
 function handleMotion(event) {
-    // Aceleración en el eje X e Y (ajustada según el dispositivo)
     let accelX = event.accelerationIncludingGravity.x;
     let accelY = event.accelerationIncludingGravity.y;
 
-    // Ajustamos el movimiento del círculo pequeño
     positionX += accelX * speedFactor;
     positionY += accelY * speedFactor;
 
@@ -42,34 +35,23 @@ function handleMotion(event) {
     let distanceY = Math.abs(positionY);
 
     // Definir un rango mayor para la detección de centrado
-    let threshold = 20; // Ampliamos el rango de detección
+    let threshold = 20;
 
     // Verificación de la posición
     console.log("Posición X:", positionX, "Posición Y:", positionY);
     console.log("Distancia X:", distanceX, "Distancia Y:", distanceY);
 
     if (distanceX < threshold && distanceY < threshold) {
-        // Cambiar ambos círculos a color verde
+        console.log("Círculo pequeño centrado. Generando fuegos artificiales...");
         circleLarge.style.animation = 'success-color-change 1s forwards';
         circleSmall.style.animation = 'success-color-change 1s forwards';
-
-        // Mostrar fuegos artificiales en el centro del círculo grande
-        console.log("Círculo pequeño centrado. Generando fuegos artificiales...");
         createFireworks(gameAreaWidth / 2, gameAreaHeight / 2);
-        
-}
-}
-
-// Escuchar el movimiento del acelerómetro
-if (window.DeviceMotionEvent) {
-    window.addEventListener('devicemotion', handleMotion, true);
-} else {
-    alert("Tu dispositivo no soporta el acelerómetro.");
+    }
 }
 
-// Función para generar fuegos artificiales
+// Función para crear fuegos artificiales
 function createFireworks(x, y) {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
         let firework = document.createElement('div');
         firework.classList.add('firework');
         firework.style.left = `${x + (Math.random() * 100) - 50}px`;
@@ -81,4 +63,11 @@ function createFireworks(x, y) {
             firework.remove();
         }, 800);
     }
+}
+
+// Inicializar el evento de movimiento
+if (window.DeviceMotionEvent) {
+    window.addEventListener('devicemotion', handleMotion, false);
+} else {
+    alert("El dispositivo no soporta el evento de movimiento.");
 }
