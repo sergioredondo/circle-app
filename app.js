@@ -42,7 +42,6 @@ function handleMotion(event) {
     console.log("Distancia X:", distanceX, "Distancia Y:", distanceY);
 
     if (distanceX < threshold && distanceY < threshold) {
-        console.log("Círculo pequeño centrado. Generando fuegos artificiales...");
         
         // Cambiar ambos círculos a color verde inmediatamente
         circleLarge.style.backgroundColor = 'green';
