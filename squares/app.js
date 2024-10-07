@@ -40,10 +40,10 @@ function checkIfCentered() {
 
     // Verifica si el cuadrado pequeño está centrado con el guía
     if (
-        smallBounds.left > guideBounds.left - 2 && 
-        smallBounds.right < guideBounds.right + 2 &&
-        smallBounds.top > guideBounds.top - 2 && 
-        smallBounds.bottom < guideBounds.bottom + 2
+        smallBounds.left > guideBounds.left - 5 && 
+        smallBounds.right < guideBounds.right + 5 &&
+        smallBounds.top > guideBounds.top - 5 && 
+        smallBounds.bottom < guideBounds.bottom + 5
     ) {
         centered = true;
         changeColorToGreen();
