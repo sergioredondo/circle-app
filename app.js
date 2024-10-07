@@ -58,6 +58,7 @@ function handleMotion(event) {
         createFireworks(gameAreaWidth / 2, gameAreaHeight / 2);
         
 }
+}
 
 // Escuchar el movimiento del acelerómetro
 if (window.DeviceMotionEvent) {
@@ -80,5 +81,4 @@ function createFireworks(x, y) {
             firework.remove();
         }, 800);
     }
-}
 }
