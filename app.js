@@ -49,8 +49,8 @@ function handleMotion(event) {
         console.log("Círculo pequeño centrado. Generando fuegos artificiales...");
 
         // Cambiar ambos círculos a color verde
-        circleLarge.style.backgroundColor = 'green';
-        circleSmall.style.backgroundColor = 'green';
+        circleLarge.style.borderColor = 'green';
+        circleSmall.style.borderColor = 'green';
 
         // Establecer la bandera de juego ganado
         isGameWon = true;
