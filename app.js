@@ -42,7 +42,7 @@ function handleMotion(event) {
     let distanceY = Math.abs(positionY);
 
     // Definir un rango mayor para la detección de centrado
-    let threshold = 10; // Ampliamos el rango de detección
+    let threshold = 20; // Ampliamos el rango de detección
 
     if (distanceX < threshold && distanceY < threshold) {
         // Cambiar ambos círculos a color verde
