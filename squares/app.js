@@ -9,8 +9,8 @@ let posX = window.innerWidth / 2 - squareSmall.offsetWidth / 2;
 let posY = window.innerHeight / 2 - squareSmall.offsetHeight / 2;
 
 // Sensibilidad ajustada para un movimiento más suave
-const sensitivityX = 15;
-const sensitivityY = 20;
+const sensitivityX = 20;
+const sensitivityY = 40;
 
 window.addEventListener("deviceorientation", handleOrientation, true);
 
