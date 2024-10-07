@@ -28,6 +28,19 @@ body {
     background-color: transparent;
 }
 
+/* Estilo para el círculo guía dentro del círculo grande */
+#circle-guide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px; /* Ligeramente más grande que el círculo pequeño */
+    height: 60px;
+    border-radius: 50%;
+    border: 2px dashed #fafafa; /* Línea clara */
+    background-color: transparent;
+}
+
 /* Estilo para el círculo pequeño */
 #circle-small {
     position: absolute;
