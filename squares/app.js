@@ -4,31 +4,36 @@ let squareLarge = document.getElementById("square-large");
 
 let centered = false;
 
-// Ajustamos la sensibilidad
-const sensitivityX = 20;  // Reducimos la escala en el eje X
-const sensitivityY = 40;  // Reducimos la escala en el eje Y
+// Posiciones iniciales del cuadrado pequeño
+let posX = window.innerWidth / 2 - squareSmall.offsetWidth / 2;
+let posY = window.innerHeight / 2 - squareSmall.offsetHeight / 2;
+
+// Sensibilidad ajustada para un movimiento más suave
+const sensitivityX = 5;
+const sensitivityY = 10;
 
 window.addEventListener("deviceorientation", handleOrientation, true);
 
 function handleOrientation(event) {
-    if (centered) return;  // No hacemos nada si el cuadrado ya está centrado
+    if (centered) return;  // Si ya está centrado, no hacemos nada
 
-    let x = event.gamma; // Inclinación de lado a lado
-    let y = event.beta;  // Inclinación adelante-atrás
+    let x = event.gamma;  // Inclinación de lado a lado
+    let y = event.beta;   // Inclinación adelante-atrás
 
-    // Limitar el rango de valores de inclinación para evitar movimientos extremos
-    if (x > 45) x = 45;
-    if (x < -45) x = -45;
-    if (y > 45) y = 45;
-    if (y < -45) y = -45;
-
-    // Ajustamos el movimiento en función de la sensibilidad
+    // Ajuste del movimiento basados en la inclinación y la sensibilidad
     let moveX = (x / sensitivityX) * (window.innerWidth - squareSmall.offsetWidth);
     let moveY = (y / sensitivityY) * (window.innerHeight - squareSmall.offsetHeight);
 
-    // Posicionar el cuadrado pequeño
-    squareSmall.style.left = `${50 + moveX}px`;
-    squareSmall.style.top = `${50 + moveY}px`;
+    // Actualizamos la posición del cuadrado pequeño
+    posX += moveX;
+    posY += moveY;
+
+    // Limitar para que no salga fuera de la pantalla
+    posX = Math.max(0, Math.min(window.innerWidth - squareSmall.offsetWidth, posX));
+    posY = Math.max(0, Math.min(window.innerHeight - squareSmall.offsetHeight, posY));
+
+    squareSmall.style.left = `${posX}px`;
+    squareSmall.style.top = `${posY}px`;
 
     checkIfCentered();
 }
@@ -37,7 +42,7 @@ function checkIfCentered() {
     let smallBounds = squareSmall.getBoundingClientRect();
     let guideBounds = squareGuide.getBoundingClientRect();
 
-    // Verifica si el cuadrado pequeño está centrado con el guía
+    // Verificamos si el cuadrado pequeño está dentro del cuadrado guía
     if (
         smallBounds.left > guideBounds.left - 5 &&
         smallBounds.right < guideBounds.right + 5 &&
