@@ -39,7 +39,7 @@ function handleMotion(event) {
     let distanceY = Math.abs(positionY);
 
     // Definir un rango mayor para la detección de centrado
-    let threshold = 10;
+    let threshold = 5;
 
     // Comprobar si el juego ya ha sido ganado
     if (distanceX < threshold && distanceY < threshold && !isGameWon) {
@@ -58,7 +58,7 @@ function handleMotion(event) {
 
 // Función para crear fuegos artificiales
 function createFireworks(x, y) {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
         let firework = document.createElement('div');
         firework.classList.add('firework');
         firework.style.left = `${x + (Math.random() * 100) - 50}px`;
