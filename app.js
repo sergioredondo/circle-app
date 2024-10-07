@@ -43,9 +43,10 @@ function handleMotion(event) {
 
     // Comprobar si el juego ya ha sido ganado
     if (distanceX < threshold && distanceY < threshold && !isGameWon) {
-        // Cambiar ambos círculos a color verde
+        // Cambiar los colores de los círculos a verde
         circleLarge.style.borderColor = 'green';
         circleSmall.style.borderColor = 'green';
+        circleGuide.style.borderColor = 'green'; // Cambiar el color del círculo guía también
 
         // Establecer la bandera de juego ganado
         isGameWon = true;

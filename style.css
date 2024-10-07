@@ -14,7 +14,7 @@ body {
     position: absolute;
     width: 200px; /* Doble del radio */
     height: 200px; /* Doble del radio */
-    border: 5px solid white; /* Borde blanco */
+    border: 5px solid white; /* Borde blanco y continuo */
     border-radius: 50%;
     left: calc(50% - 100px); /* Centrado */
     top: calc(50% - 100px); /* Centrado */
@@ -34,7 +34,7 @@ body {
     position: absolute;
     width: 50px; /* Doble del radio */
     height: 50px; /* Doble del radio */
-    border: 5px solid white; /* Borde blanco */
+    border: 5px solid white; /* Borde blanco y continuo */
     border-radius: 50%;
     left: calc(50% - 25px); /* Centrado */
     top: calc(50% - 25px); /* Centrado */
