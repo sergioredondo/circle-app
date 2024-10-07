@@ -43,8 +43,12 @@ function handleMotion(event) {
 
     if (distanceX < threshold && distanceY < threshold) {
         console.log("Círculo pequeño centrado. Generando fuegos artificiales...");
-        circleLarge.style.animation = 'success-color-change 1s forwards';
-        circleSmall.style.animation = 'success-color-change 1s forwards';
+        
+        // Cambiar ambos círculos a color verde inmediatamente
+        circleLarge.style.backgroundColor = 'green';
+        circleSmall.style.backgroundColor = 'green';
+
+        // Generar fuegos artificiales
         createFireworks(gameAreaWidth / 2, gameAreaHeight / 2);
     }
 }
