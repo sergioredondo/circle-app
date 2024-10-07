@@ -17,7 +17,7 @@ function handleOrientation(event) {
     let y = event.beta;  // Inclinación de adelante hacia atrás
 
     // Ajustamos la sensibilidad para que pequeños movimientos se traduzcan en grandes cambios
-    let sensitivityX = 5;  // Aumenta la sensibilidad del eje X
+    let sensitivityX = 2;  // Aumenta la sensibilidad del eje X
     let sensitivityY = 2;  // Aumenta la sensibilidad del eje Y (más controlado)
 
     // Calcular nuevos valores de movimiento basados en la sensibilidad
